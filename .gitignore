@@ -1,4 +1,4 @@
 node_modules
-
+.wolfpack
 # General
 .DS_Store
