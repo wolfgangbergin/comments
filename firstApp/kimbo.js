@@ -13,7 +13,7 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/B/:sub/:sub/', (req, res)=>{
-    res.send('<h1 style="color:red">sub /B</h1>')
+  res.send('<h1 style="color:red">sub /B</h1>')
 })
 
 
