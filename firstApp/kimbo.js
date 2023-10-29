@@ -4,8 +4,8 @@ const app = express()
 
 
 app.use((req, res)=>{
-    l(req)
-    res.send('This is your response')
+   
+    res.send('This is your response2')
 })
 
 app.listen(3000, () => {
