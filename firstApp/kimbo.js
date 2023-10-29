@@ -29,6 +29,19 @@ app.listen(3001, () => {
     l('listening on port 3001')
     })
 
+    app.get('/search', (req, res) => {
+        l(req.query);
+        const {  wolfman, color } = req.query;
+        if (!color){
+          res.send(
+              `<h1 style="color:${color}">No color givin,  </h1>`
+            );
+        }
+        res.send(
+          `<h1 style="color:${color}">wolfman: ${wolfman},  </h1>`
+        );
+      });
+
     app.get('*', (req, res)=>{
         res.send('Error does not compute')
     })

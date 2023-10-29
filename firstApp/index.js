@@ -33,14 +33,14 @@ app.get('/dogs', (req, res) => {
 
 app.get('/search', (req, res) => {
   l(req.query);
-  const {  wolfman, q } = req.query;
-  if (!q){
+  const {  wolfman, color } = req.query;
+  if (!color){
     res.send(
-        `<h1 style="color:${q}">wolfman: ${'Nothing found if nothing searched'},  </h1>`
+        `<h1 style="color:${color}">No color givin,  </h1>`
       );
   }
   res.send(
-    `<h1 style="color:${q}">wolfman: ${wolfman},  </h1>`
+    `<h1 style="color:${color}">wolfman: ${wolfman},  </h1>`
   );
 });
 
