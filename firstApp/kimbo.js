@@ -4,11 +4,13 @@ const app = express()
 
 
 app.use((req, res)=>{
-   
+    l(req)
     res.send('This is your response2')
 })
 
-app.listen(3000, () => {
+
+
+app.listen(3001, () => {
     l('listening on port 3000')
     })
 

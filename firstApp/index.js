@@ -12,6 +12,7 @@ app.listen(3000, () => {
     l('listening on port 3000')
     })
 
+    
 // globalThis.l = console.log;
 // globalThis.d = console.dir   
  // globalThis.wolfgang = {}
