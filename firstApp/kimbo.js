@@ -29,16 +29,32 @@ app.listen(3001, () => {
     l('listening on port 3001')
     })
 
-    app.get('/search', (req, res) => {
+    app.get('/a/:tuesday/:thursday/search', (req, res) => {
         l(req.query);
         const {  wolfman, color } = req.query;
+        const {tuesday, thursday} = req.params
         if (!color){
           res.send(
               `<h1 style="color:${color}">No color givin,  </h1>`
             );
         }
         res.send(
-          `<h1 style="color:${color}">wolfman: ${wolfman},  </h1>`
+          `<h1 style="color:${color}">wolfman: ${wolfman}, tuesday: ${tuesday}, thursday: ${thursday}, </h1>`
+        );
+      });
+
+
+      app.post('/a/:tuesday/:thursday/search', (req, res) => {
+        l(req.query);
+        const {  wolfman, color } = req.query;
+        const {tuesday, thursday} = req.params
+        if (!color){
+          res.send(
+              `<h1 style="color:${color}">No color givin,  </h1>`
+            );
+        }
+        res.send(
+          `<h1 style="color:${color}">wolfman: ${wolfman}, tuesday: ${tuesday}, thursday: ${thursday}, </h1>`
         );
       });
 
