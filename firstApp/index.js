@@ -2,6 +2,8 @@ require('./wolfgang')
 const express = require('express')
 const app = express()
 const path = require('path')
+const redditData = require('./data.json')
+const { sub } = require('date-fns')
 
 const tuesday = 'tuesday'
 
@@ -17,10 +19,12 @@ app.get('/cats', (req, res) => {
   res.render('cats', { cats })
 })
 
-app.get('/r/:address1/:address2', (req, res) => {
+app.get('/r/:address1', (req, res) => {
 
-  const { address1, address2 } = req.params
-  res.render('subreddit', { address1, address2 })
+  const { address1 } = req.params
+  const data = redditData[address1]
+
+  res.render('subreddit', { subreddit })
 })
 
 app.get('/rand', (req, res) => {
