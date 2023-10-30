@@ -5,4 +5,5 @@ globalThis.wolfgang = {
 
 }
 
+globalThis.kimbo = ' kim414'
 exports
