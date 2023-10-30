@@ -10,5 +10,11 @@
   
     <h1>You are a random number is <%= num %></h1>
     <h1>Your day is <%= tuesday%></h1>
+    <% if(num % 2 === 0){ %>
+        <h1>Even</h1>
+    <% } else { %>
+        <h1>Odd</h1>
+    <% } %>
+
 </body>
 </html>
