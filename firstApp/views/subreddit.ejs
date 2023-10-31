@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> address </title>
-</head>
-<body>
-    <h1> browsing the <%= subreddit %> usiness</h1>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>address</title>
+  </head>
+  <body>
+    <h1>browsing the <%= name %> thursday</h1>
+    <h1>browsing the <%= description %> thursday</h1>
+    <p><%= subscribers%></p>
+    <ul>
+      <% posts.forEach((object)=>{%>
+      <li>
+        Title: <%= object.title %> <br />
+        Author: <%= object.author %> <br />
+        
+        <img src="<%= object.img %>" style="width:50px;height:60px;">
+
+        <%= object.img && %> <br />
+      </li>
+      <hr />
+      <% }) %>
+    </ul>
+  </body>
 </html>
