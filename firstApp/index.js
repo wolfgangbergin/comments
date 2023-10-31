@@ -6,7 +6,7 @@ const redditData = require('./data.json')
 
 
 app.use(express.static(path.join(__dirname, 'public')))
-
+l(path.join(__dirname, 'public'))
 const tuesday = 'tuesday'
 
 app.set('view engine', 'ejs')
