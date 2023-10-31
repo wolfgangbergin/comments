@@ -2,13 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>address</title>
-    <link rel="stylesheet" href="firstApp/public/app.css" />
+    <link
+      rel="stylesheet"
+      href="/app.css"
+    />
   </head>
   <body>
     <h1>browsing the <%= name %> thursday</h1>
-    <h1>browsing the <%= description %> thursday</h1>
+    <h1>
+      browsing the <%= description %> thursday
+    </h1>
     <p><%= subscribers%></p>
     <ul>
       <% posts.forEach((object)=>{%>
@@ -16,13 +24,11 @@
         Title: <%= object.title %> <br />
         Author: <%= object.author %> <br />
         <% if(object.img){ %>
-            <img src="<%= object.img %>" style="width:50px;height:60px;">
-            <% } %>
-
-          
-                
-               
-        
+        <img
+          src="<%= object.img %>"
+          style="width: 50px; height: 60px"
+        />
+        <% } %>
       </li>
       <hr />
       <% }) %>
