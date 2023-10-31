@@ -14,10 +14,10 @@
       <li>
         Title: <%= object.title %> <br />
         Author: <%= object.author %> <br />
-        
+        <% if(object.img){ %>
         <img src="<%= object.img %>" style="width:50px;height:60px;">
-
-        <%= object.img && %> <br />
+        <% } %>
+        
       </li>
       <hr />
       <% }) %>
