@@ -5,6 +5,8 @@ const path = require('path')
 const redditData = require('./data.json')
 
 
+app.use(express.static(path.join(__dirname, 'public')))
+
 const tuesday = 'tuesday'
 
 app.set('view engine', 'ejs')
@@ -24,7 +26,7 @@ app.get('/r/:param1', (req, res) => {
   const { param1 } = req.params
   const data = redditData[param1]
 
-  res.render('subreddit', { ...data })
+  data ? res.render('subreddit', { ...data }) : res.render('notfound', { param1 })
 })
 
 app.get('/rand', (req, res) => {
@@ -34,5 +36,5 @@ app.get('/rand', (req, res) => {
 
 app.listen(3000, () => {
   l('listening on port 3000')
-  l(__dirname)
+  
 })
