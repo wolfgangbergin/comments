@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const redditData = require('./data.json')
+const http = require('http')
+const reload = require('reload')
+
 
 app.use(express.static(path.join(__dirname, './public')))
 
@@ -41,6 +44,12 @@ app.get('/rand', (req, res) => {
 })
 
 
-app.listen(3000, () => {
+const server = http.createServer(app)
+
+
+
+server.listen(3000, () => {
   l('listening on port 3000')
 })
+
+reload(app)
