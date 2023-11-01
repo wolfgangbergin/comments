@@ -47,13 +47,13 @@ app.get('/getPost', (req, res) => {
   res.render('getPost', {  })
 })
 
-app.get('/tocosGET', (req, res) => {
+app.get('/tocos', (req, res) => {
  
-  res.send('GET /tocos response')
+  res.send('GET /tocos response ')
 })
-app.post('/tocosPOST', (req, res) => {
- 
-  res.send('POST /tocos response 414')
+app.post('/tocos', (req, res) => {
+ l(req.body)
+  res.send('POST /tocos response ')
 })
 
 
