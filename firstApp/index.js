@@ -42,9 +42,18 @@ app.get('/rand', (req, res) => {
   const num = Math.floor(Math.random() * 10) + 1
   res.render('random', { num, tuesday })
 })
-app.get('/tocos', (req, res) => {
-  const num = Math.floor(Math.random() * 10) + 1
-  res.render('tocos', { num, tuesday })
+app.get('/getPost', (req, res) => {
+ 
+  res.render('getPost', {  })
+})
+
+app.get('/tocosGET', (req, res) => {
+ 
+  res.send('GET /tocos response')
+})
+app.post('/tocosPOST', (req, res) => {
+ 
+  res.send('POST /tocos response 414')
 })
 
 
