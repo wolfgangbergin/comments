@@ -1,18 +1,17 @@
 <%- include('partials/head') %>
+<body class="bg-wolfgang">
+  <%- include('partials/navbar') %>
+  <ul>
+    <% for(let cat of cats){ %>
+    <li><%= cat %>!!!</li>
+    <% } %>
+  </ul>
+  <h1>Welcome to cats page</h1>
+  <ul>
+    <% cats.forEach((cat)=>{%>
+    <li><%= cat %>???</li>
+    <% }) %>
+  </ul>
 
-    <%- include('partials/navbar') %>
-    <ul>
-        <% for(let cat of cats){ %>
-            <li><%= cat %>!!!</li>
-        <% } %>
-
-    </ul>
-    <h1>Welcome to cats page</h1>
-    <ul>
-        <% cats.forEach((cat)=>{%>
-            <li><%= cat %>???</li>
-        <% }) %>
-
-    </ul>
-    
-    <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
+</body>

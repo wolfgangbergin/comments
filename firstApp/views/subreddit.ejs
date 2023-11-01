@@ -1,6 +1,6 @@
 <%- include('partials/head') %>
 
-<body>
+<body class="  bg-wolfgang">
   <%- include('partials/navbar') %>
   <div class="container">
     <h1>browsing the <%= name %> thursday</h1>
@@ -16,7 +16,7 @@
         <% if(object.img){ %>
         <img
           src="<%= object.img %>"
-          style="width: 50px; height: 60px"
+          style="width: 75px; height: 90px"
         />
         <% } %>
       </li>
@@ -26,4 +26,3 @@
   </div>
 
   <%- include('partials/footer') %>
-</body>
