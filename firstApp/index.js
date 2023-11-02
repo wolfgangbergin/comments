@@ -5,8 +5,11 @@ const path = require('path')
 const redditData = require('./data.json')
 const http = require('http')
 const reload = require('reload')
+const comments = require('./comments')
 
 
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(express.static(path.join(__dirname, './public')))
 
 const tuesday = 'tuesday'
@@ -53,9 +56,14 @@ app.get('/tocos', (req, res) => {
 })
 app.post('/tocos', (req, res) => {
  l(req.body)
-  res.send('POST /tocos response ')
+ const {meat, qty} = req.body
+  res.send(`OK, here are your ${qty} ${meat} tacos`)
 })
 
+
+app.get('/comments', (req, res) => {
+  res.render('comments', {  })
+})
 
 const server = http.createServer(app)
 
