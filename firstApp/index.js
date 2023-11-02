@@ -8,6 +8,7 @@ const reload = require('reload')
 const comments = require('./comments')
 
 
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, './public')))
@@ -55,14 +56,15 @@ app.get('/tocos', (req, res) => {
   res.send('GET /tocos response ')
 })
 app.post('/tocos', (req, res) => {
- l(req.body)
+
  const {meat, qty} = req.body
   res.send(`OK, here are your ${qty} ${meat} tacos`)
 })
 
 
 app.get('/comments', (req, res) => {
-  res.render('comments', {  })
+ 
+  res.render('comments', { banana: comments })
 })
 
 const server = http.createServer(app)

@@ -7,6 +7,21 @@
 </head>
 <body>
 
-    <h1>Comments wolf</h1>
+    <h1>Comments </h1>
+
+   
+
+
+    <ul>
+        <% banana.comments.forEach(obj => {%>
+            <li><%=obj.username %> - <%=obj.comment %></li>
+            <%  }); %>
+
+
+    </ul>
+  
+        
+
+   
 </body>
 </html>
