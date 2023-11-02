@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>comments</title>
-</head>
-<body>
-
+<%- include('partials/head') %>
+<body class="bg-wolfgang">
+    <%- include('partials/navbar') %>
     <h1>Comments </h1>
 
    
 
 
     <ul>
-        <% banana.comments.forEach(obj => {%>
+        <% comments.forEach(obj => {%>
             <li><%=obj.username %> - <%=obj.comment %></li>
             <%  }); %>
 
 
     </ul>
   
-        
+    <a class="text-danger" href="/comments/new">Add new comment</a> 
 
    
 </body>

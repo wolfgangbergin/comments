@@ -1,22 +1,19 @@
-const comments = [
-    {
-        username: 'wolfman',
-        comment: 'Hello World',
+exports.comments = [
+  {
+    id: 0,
+    username: 'wolfman',
+    comment: 'Hello World',
+  },
 
-    },
+  {
+    id: 1,
+    username: 'kim',
+    comment: 'Hi',
+  },
 
-    {
-
-        username: 'kim',
-        comment: 'Hi',
-
-    },
-
-    {
-
-        username: 'jojo',
-        comment: 'Hello',
-
-    },
+  {
+    id: 2,
+    username: 'jojo',
+    comment: 'Hello',
+  },
 ]
-exports.comments = comments;

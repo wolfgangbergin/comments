@@ -5,13 +5,12 @@ const path = require('path')
 const redditData = require('./data.json')
 const http = require('http')
 const reload = require('reload')
-const comments = require('./comments')
-
-
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static(path.join(__dirname, './public')))
+app.use(
+  express.static(path.join(__dirname, './public'))
+)
 
 const tuesday = 'tuesday'
 
@@ -47,29 +46,49 @@ app.get('/rand', (req, res) => {
   res.render('random', { num, tuesday })
 })
 app.get('/getPost', (req, res) => {
- 
-  res.render('getPost', {  })
+  res.render('getPost', {})
 })
 
 app.get('/tocos', (req, res) => {
- 
   res.send('GET /tocos response ')
 })
 app.post('/tocos', (req, res) => {
-
- const {meat, qty} = req.body
-  res.send(`OK, here are your ${qty} ${meat} tacos`)
+  const { meat, qty } = req.body
+  res.send(
+    `OK, here are your ${qty} ${meat} tacos`
+  )
 })
-
 
 app.get('/comments', (req, res) => {
- 
-  res.render('comments', { banana: comments })
+  res.render('comments', {
+    ...require('./comments'),
+  })
 })
 
+app.get('/comments/new', (req, res) => {
+  res.render('new')
+})
+
+
+app.post('/comments', (req, res) => {
+  
+  const { username, comment } = req.body
+  const comments = require('./comments')
+
+  comments.comments.push({ username, comment })
+  res.redirect('/comments')
+})
+
+
+app.get('/comments/:id', (req, res) => {
+  const { id } = req.params
+  const comments = require('./comments')
+  const obj = comments.comments[id]
+  res.render('show', { obj, id })
+})
+
+
 const server = http.createServer(app)
-
-
 
 server.listen(3000, () => {
   l('listening on port 3000')
