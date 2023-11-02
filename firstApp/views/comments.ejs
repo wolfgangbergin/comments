@@ -8,11 +8,10 @@
 
     <ul>
         <% comments.forEach(obj => {%>
-            <li><%=obj.username %> - <%=obj.comment %></li>
+            <a href="comments/<%=obj.id%>" class="text-warning" ><%=obj.username %> - <%=obj.comment %></a> <br>
             <%  }); %>
 
-
-    </ul>
+         </ul>
   
     <a class="text-danger" href="/comments/new">Add new comment</a> 
 

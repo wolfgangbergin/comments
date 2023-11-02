@@ -5,6 +5,8 @@ const path = require('path')
 const redditData = require('./data.json')
 const http = require('http')
 const reload = require('reload')
+const { comments } = require('./comments')
+const { id } = require('date-fns/locale')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -61,32 +63,31 @@ app.post('/tocos', (req, res) => {
 
 app.get('/comments', (req, res) => {
   res.render('comments', {
-    ...require('./comments'),
+    comments,
   })
 })
+
+
 
 app.get('/comments/new', (req, res) => {
   res.render('new')
 })
 
-
 app.post('/comments', (req, res) => {
-  
   const { username, comment } = req.body
-  const comments = require('./comments')
 
-  comments.comments.push({ username, comment })
+  l(comments.length)
+
+  comments.push({ username, comment, id: comments.length})
   res.redirect('/comments')
 })
 
-
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
-  const comments = require('./comments')
-  const obj = comments.comments[id]
+
+  const obj = comments[id]
   res.render('show', { obj, id })
 })
-
 
 const server = http.createServer(app)
 
