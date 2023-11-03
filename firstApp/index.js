@@ -20,47 +20,7 @@ const tuesday = 'tuesday'
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-app.get('/', (req, res) => {
-  res.render('home')
-})
 
-app.get('/cats', (req, res) => {
-  const cats = [
-    'Blue',
-    'Rocket',
-    'Monty',
-    'Stephanie',
-    'Winston',
-  ]
-  res.render('cats', { cats })
-})
-
-app.get('/r/:param1', (req, res) => {
-  const { param1 } = req.params
-  const data = redditData[param1]
-
-  data
-    ? res.render('subreddit', { ...data })
-    : res.render('notfound', { param1 })
-})
-
-app.get('/rand', (req, res) => {
-  const num = Math.floor(Math.random() * 10) + 1
-  res.render('random', { num, tuesday })
-})
-app.get('/getPost', (req, res) => {
-  res.render('getPost', {})
-})
-
-app.get('/tocos', (req, res) => {
-  res.send('GET /tocos response ')
-})
-app.post('/tocos', (req, res) => {
-  const { meat, qty } = req.body
-  res.send(
-    `OK, here are your ${qty} ${meat} tacos`
-  )
-})
 app.patch('/comments/:id', (req, res) => {
   const { id } = req.params
   const { comment } = req.body
@@ -68,7 +28,7 @@ app.patch('/comments/:id', (req, res) => {
   const foundComment = comments.find(
     (c) => c.id === id
   )
-  l(foundComment)
+ 
   foundComment.comment = comment
   res.redirect('/comments')
 })
@@ -94,22 +54,18 @@ app.post('/comments', (req, res) => {
 
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
+  l(id)
 
-  const obj =
-    comments[
-      comments.findIndex((c) => c.id === id)
-    ]
-  res.render('show', { obj, id })
+  const obj = comments.find((c) => c.id === id)
+    l(obj)
+  res.render('show', { obj })
 })
 
 app.get('/comments/:id/edit', (req, res) => {
   const { id } = req.params
 
-  const obj =
-    comments[
-      comments.findIndex((c) => c.id === id)
-    ]
-  res.render('edit', { obj, id })
+  const obj = comments.find((c) => c.id === id)
+  res.render('edit', { obj })
 })
 
 const server = http.createServer(app)
