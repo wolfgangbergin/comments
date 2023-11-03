@@ -8,6 +8,9 @@ const reload = require('reload')
 const { comments } = require('./comments')
 
 const { v4: uuid } = require('uuid')
+const methodOverride = require('method-override')
+
+app.use(methodOverride('_method'))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -25,7 +28,7 @@ app.patch('/comments/:id', (req, res) => {
   const { comment } = req.body
 
   const foundComment = comments.find(
-    (c) => c.id === id
+    (c) => c.id == id
   )
 
   foundComment.comment = comment
