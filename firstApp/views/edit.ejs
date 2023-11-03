@@ -1,0 +1,13 @@
+<%- include('partials/head') %>
+<body class="bg-wolfgang">
+    <%- include('partials/navbar') %>
+
+    <h1>edit Comment </h1>
+    <form action="/comments" method="post">
+        <p><%=obj.username %></p>
+        <input type="text" name="comment" placeholder="<%=obj.comment %>"></input>
+        <button>Submit</button>
+    </form>
+    <a class="text-danger" href="/comments">comments</a> 
+</body>
+</html>

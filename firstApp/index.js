@@ -7,7 +7,7 @@ const http = require('http')
 const reload = require('reload')
 const { comments } = require('./comments')
 
-const {v4: uuid} = require('uuid')
+const { v4: uuid } = require('uuid')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -23,8 +23,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.get('/', (req, res) => {
   res.render('home')
 })
-
-
 
 app.get('/cats', (req, res) => {
   const cats = [
@@ -54,8 +52,6 @@ app.get('/getPost', (req, res) => {
   res.render('getPost', {})
 })
 
-
-
 app.get('/tocos', (req, res) => {
   res.send('GET /tocos response ')
 })
@@ -68,24 +64,20 @@ app.post('/tocos', (req, res) => {
 app.patch('/comments/:id', (req, res) => {
   const { id } = req.params
   const { comment } = req.body
- 
+
   const foundComment = comments.find(
     (c) => c.id === id
   )
   l(foundComment)
   foundComment.comment = comment
   res.redirect('/comments')
- 
 })
-
 
 app.get('/comments', (req, res) => {
   res.render('comments', {
     comments,
   })
 })
-
-
 
 app.get('/comments/new', (req, res) => {
   res.render('new')
@@ -96,15 +88,28 @@ app.post('/comments', (req, res) => {
 
   l(comments.length)
 
-  comments.push({ username, comment, id: uuid()})
+  comments.push({ username, comment, id: uuid() })
   res.redirect('/comments')
 })
 
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
 
-  const obj = comments[comments.findIndex((c) => c.id === id)]
+  const obj =
+    comments[
+      comments.findIndex((c) => c.id === id)
+    ]
   res.render('show', { obj, id })
+})
+
+app.get('/comments/:id/edit', (req, res) => {
+  const { id } = req.params
+
+  const obj =
+    comments[
+      comments.findIndex((c) => c.id === id)
+    ]
+  res.render('edit', { obj, id })
 })
 
 const server = http.createServer(app)
