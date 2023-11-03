@@ -54,6 +54,8 @@ app.get('/getPost', (req, res) => {
   res.render('getPost', {})
 })
 
+
+
 app.get('/tocos', (req, res) => {
   res.send('GET /tocos response ')
 })
@@ -101,8 +103,6 @@ app.post('/comments', (req, res) => {
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
 
- 
- l(comments.findIndex((c) => c.id == id))
   const obj = comments[comments.findIndex((c) => c.id === id)]
   res.render('show', { obj, id })
 })
