@@ -32,6 +32,11 @@ app.patch('/comments/:id', (req, res) => {
   res.redirect('/comments')
 })
 
+
+
+
+
+
 app.get('/comments', (req, res) => {
   res.render('comments', {
     comments,
@@ -99,6 +104,15 @@ app.get('/comments/:id/edit', (req, res) => {
   const obj = comments.find((c) => c.id == +id)
   res.render('edit', { obj })
 })
+
+
+
+
+
+
+
+
+
 
 const server = http.createServer(app)
 
