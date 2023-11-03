@@ -6,7 +6,8 @@ const redditData = require('./data.json')
 const http = require('http')
 const reload = require('reload')
 const { comments } = require('./comments')
-const { id } = require('date-fns/locale')
+
+const {v4: uuid} = require('uuid')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -22,6 +23,8 @@ app.set('views', path.join(__dirname, 'views'))
 app.get('/', (req, res) => {
   res.render('home')
 })
+
+
 
 app.get('/cats', (req, res) => {
   const cats = [
@@ -60,6 +63,18 @@ app.post('/tocos', (req, res) => {
     `OK, here are your ${qty} ${meat} tacos`
   )
 })
+app.patch('/comments/:id', (req, res) => {
+  const { id } = req.params
+  const { comment } = req.body
+ 
+  const foundComment = comments.find(
+    (c) => c.id === id
+  )
+  foundComment.comment = comment
+  res.redirect('/comments')
+ 
+})
+
 
 app.get('/comments', (req, res) => {
   res.render('comments', {
@@ -78,14 +93,16 @@ app.post('/comments', (req, res) => {
 
   l(comments.length)
 
-  comments.push({ username, comment, id: comments.length})
+  comments.push({ username, comment, id: uuid()})
   res.redirect('/comments')
 })
 
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
 
-  const obj = comments[id]
+ 
+ l(comments.findIndex((c) => c.id == id))
+  const obj = comments[comments.findIndex((c) => c.id === id)]
   res.render('show', { obj, id })
 })
 
