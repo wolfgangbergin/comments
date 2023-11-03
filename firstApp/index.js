@@ -70,6 +70,7 @@ app.patch('/comments/:id', (req, res) => {
   const foundComment = comments.find(
     (c) => c.id === id
   )
+  l(foundComment)
   foundComment.comment = comment
   res.redirect('/comments')
  
