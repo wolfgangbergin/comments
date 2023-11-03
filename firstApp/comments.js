@@ -2,19 +2,19 @@ const { v4: uuid } = require('uuid')
 
 exports.comments = [
   {
-    id: uuid(),
+    id: 111,
     username: 'wolfman',
     comment: 'Hello World',
   },
 
   {
-    id: uuid(),
+    id: 222,
     username: 'kim',
     comment: 'Hi',
   },
 
   {
-    id: uuid(),
+    id: 333,
     username: 'jojo',
     comment: 'Hello',
   },

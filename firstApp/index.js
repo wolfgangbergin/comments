@@ -20,7 +20,6 @@ const tuesday = 'tuesday'
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-
 app.patch('/comments/:id', (req, res) => {
   const { id } = req.params
   const { comment } = req.body
@@ -28,7 +27,7 @@ app.patch('/comments/:id', (req, res) => {
   const foundComment = comments.find(
     (c) => c.id === id
   )
- 
+
   foundComment.comment = comment
   res.redirect('/comments')
 })
@@ -39,6 +38,12 @@ app.get('/comments', (req, res) => {
   })
 })
 
+
+
+
+
+
+
 app.get('/comments/new', (req, res) => {
   res.render('new')
 })
@@ -48,23 +53,50 @@ app.post('/comments', (req, res) => {
 
   l(comments.length)
 
-  comments.push({ username, comment, id: uuid() })
+  comments.push({ username, comment, id: comments.length })
   res.redirect('/comments')
 })
 
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
-  l(id)
-
-  const obj = comments.find((c) => c.id === id)
-    l(obj)
+  l('wolfman58',  id)
+l('wolfman67', comments.find((c) => c.id == +id))
+  const obj = comments.find((c) => c.id == +id)
+  
   res.render('show', { obj })
 })
+///////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get('/comments/:id/edit', (req, res) => {
   const { id } = req.params
 
-  const obj = comments.find((c) => c.id === id)
+  const obj = comments.find((c) => c.id == +id)
   res.render('edit', { obj })
 })
 
