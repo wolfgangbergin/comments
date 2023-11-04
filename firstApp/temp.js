@@ -1,3 +1,5 @@
+const tuesday = 'tuesday'
+
 app.get('/', (req, res) => {
     res.render('home')
   })

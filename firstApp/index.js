@@ -5,7 +5,7 @@ const path = require('path')
 const redditData = require('./data.json')
 const http = require('http')
 const reload = require('reload')
-const { comments } = require('./comments')
+let { comments } = require('./comments')
 
 const { v4: uuid } = require('uuid')
 const methodOverride = require('method-override')
@@ -18,8 +18,6 @@ app.use(
   express.static(path.join(__dirname, './public'))
 )
 
-const tuesday = 'tuesday'
-
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
@@ -31,26 +29,23 @@ app.patch('/comments/:id', (req, res) => {
     (c) => c.id == id
   )
 
+  l(comments.findIndex(
+    (c) => c.id == id
+  ))
+
   foundComment.comment = comment
+  const newComment = {...foundComment}
+  comments[comments.findIndex(
+    (c) => c.id == id
+  )] = newComment
   res.redirect('/comments')
 })
-
-
-
-
-
 
 app.get('/comments', (req, res) => {
   res.render('comments', {
     comments,
   })
 })
-
-
-
-
-
-
 
 app.get('/comments/new', (req, res) => {
   res.render('new')
@@ -59,47 +54,23 @@ app.get('/comments/new', (req, res) => {
 app.post('/comments', (req, res) => {
   const { username, comment } = req.body
 
-  l(comments.length)
-
-  comments.push({ username, comment, id: comments.length })
+  comments.push({
+    username,
+    comment,
+    id: comments.length,
+  })
   res.redirect('/comments')
 })
-
-
-
-
-
-
-
-
-
-
 
 ///////////////////////////////////////////////
 app.get('/comments/:id', (req, res) => {
   const { id } = req.params
-  l('wolfman58',  id)
-l('wolfman67', comments.find((c) => c.id == +id))
+
   const obj = comments.find((c) => c.id == +id)
-  
+
   res.render('show', { obj })
 })
 ///////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.get('/comments/:id/edit', (req, res) => {
   const { id } = req.params
@@ -108,14 +79,12 @@ app.get('/comments/:id/edit', (req, res) => {
   res.render('edit', { obj })
 })
 
+app.delete('/comments/:id', (req, res) => {
+  const { id } = req.params
 
-
-
-
-
-
-
-
+  comments = comments.filter((c) => c.id != +id)
+  res.redirect('/comments')
+})
 
 const server = http.createServer(app)
 

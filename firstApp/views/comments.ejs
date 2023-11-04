@@ -9,7 +9,8 @@
     <ul>
         <% comments.forEach(obj => {%>
             <a href="comments/<%=obj.id%>" class="text-warning" ><%=obj.username %> - <%=obj.comment %></a> 
-            <a href="comments/<%=obj.id%>/edit" class="text-warning" >edit</a><br>
+            <a href="comments/<%=obj.id%>/edit" class="text-warning" >edit</a>
+            <a href="comments/<%=obj.id%>/DELETE" class="text-warning" >delete</a><br>
             <%  }); %>
 
             
