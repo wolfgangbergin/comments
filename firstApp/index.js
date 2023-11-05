@@ -79,7 +79,7 @@ app.get('/comments/:id/edit', (req, res) => {
   res.render('edit', { obj })
 })
 
-app.delete('/comments/:id', (req, res) => {
+app.get('/comments/:id/wolfgang', (req, res) => {
   const { id } = req.params
 
   comments = comments.filter((c) => c.id != +id)

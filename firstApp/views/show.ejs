@@ -6,9 +6,6 @@
     <h2>id: <%=obj.id %></h2>
     <p>user: <%=obj.username %> </p>
     <p>comment: <%=obj.comment %></p>
-    <a class="text-danger" href="/comments">comments</a> 
-    <form action="/comments/<%=obj.id%>?_method=DELETE" method="POST">
-        <button>Delete</button>
-        </form>
-</body>
+    <a class="text-danger" href="/comments">comments</a> <br>
+    <a href="/comments/<%=obj.id%>/wolfgang" class="text-warning" >delete</a>
 </html>
