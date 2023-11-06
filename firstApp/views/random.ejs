@@ -1,17 +1,17 @@
 <%- include('partials/head') %>
 <body class="bg-wolfgang">
-    <%- include('partials/navbar') %>
-    <div class="container">
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <h1>Welcome to random page</h1>
 
-        <h1>Welcome to random page</h1>
-        
-        <h1>You are a random number is <%= num %></h1>
-        <h1>Your day is <%= tuesday%></h1>
-        <% if(num % 2 === 0){ %>
-        <h1>Even</h1>
+    <h1>You are a random number is <%= num %></h1>
+    <h1>Your day is <%= tuesday%></h1>
+    <% if(num % 2 === 0){ %>
+    <h1>Even</h1>
     <% } else { %>
-        <h1>Odd</h1>
-        <% } %>
-        <h1> that number is: <%= num%2===0 ? 'EVEN' : 'ODD'%></h1>
-    </div>
-    <%- include('partials/footer') %>
+    <h1>Odd</h1>
+    <% } %>
+    <h1>that number is: <%= num%2===0 ? 'EVEN' : 'ODD'%></h1>
+  </div>
+  <%- include('partials/footer') %>
+</body>
