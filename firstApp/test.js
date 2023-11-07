@@ -20,6 +20,13 @@ const Movie = mongoose.model('Movie', movieScheme)
 
 
 // const kimbo = new Movie({ title: 'kimbo', genre: 'Comedy', year: 2013, rating: 8.2, actors: ['kimbo', ] })
-// const kim1 = new Movie({ title: 'kim1', genre: 'Comedy', year: 2013, rating: 8.313,  })
+ const kim3 = new Movie({ title: 'kim8', genre: 'Comedy', year: 2013, rating: 8.313,  }).save()
 
 //  Movie.insertMany([wolf, kimbo, kim1]).then((res) =>{l('It worked'), console.log(res)})
+
+
+
+
+
+
+Movie.findOneAndDelete({ title: 'kim8'}).then(res => console.log(res))
