@@ -13,7 +13,7 @@ const productScheme = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: true,
+     required: true,
     min: 0,
   },
   onSale: {
@@ -39,9 +39,9 @@ const productScheme = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productScheme)
 
-const bike = new Product({  price: 599, categories: ['Cycling', 'Safety'], size: 'S' })
+const bike = new Product({ name: 'Mountain Bike', price: "999", categories: ['Cycling', 'Safety'], size: 'S', color: 'blue' })
 
 bike
   .save()
   .then((data) => console.log('It worked', data))
-  .catch((err) => console.log('Error', err))
+  .catch((err) => console.log('Error', err.errors))
