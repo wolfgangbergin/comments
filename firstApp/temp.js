@@ -41,3 +41,36 @@ app.get('/', (req, res) => {
       `OK, here are your ${qty} ${meat} tacos`
     )
   })
+
+
+  ///////////////////////////////////////////////
+// const bike = new Product({
+//   name: 'tire pump',
+//   price: 29.99,
+// categories: ['Cycling', 'Safety', 'Bike Helment'],
+// })
+
+// bike
+//   .save()
+//   .then((data) => console.log('It worked', data))
+//   .catch((err) =>
+//     console.log('Error', err.errors)
+//   )
+///////////////////////////////////////////////
+
+///////////////////////////////////////////////
+
+// Product.findOneAndUpdate(
+//   { name: 'tire pump' },
+//   { size: 'XXL' },
+//   {
+//     new: true,
+//     runValidators: true
+//   }
+// )
+//   .then((data) => console.log('It worked', data))
+//   .catch((err) =>
+//     console.log('Error', err.errors)
+//   )
+
+///////////////////////////////////////////////

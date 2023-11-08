@@ -2,15 +2,8 @@ require('./wolfgang.js')
 const mongoose = require('mongoose')
 mongoose
   .connect('mongodb://127.0.0.1:27017/shopApp')
-  .then(() =>
-    console.log('Connected to MongoDB...🏁🏁🏁')
-  )
-  .catch((err) =>
-    console.error(
-      'Could not connect to MongoDB...🤬🤬🤬',
-      err
-    )
-  )
+  .then(() => console.log('Connected to MongoDB...🏁🏁🏁'))
+  .catch((err) => console.error('Could not connect to MongoDB...🤬🤬🤬', err))
 
 const productScheme = new mongoose.Schema({
   name: {
@@ -22,7 +15,7 @@ const productScheme = new mongoose.Schema({
     type: Number,
     required: true,
     min: 0,
-    max: [1000, '🤬💥🤬💥🤬' ],
+    max: [1000, '🤬💥🤬💥🤬'],
   },
   onSale: {
     type: Boolean,
@@ -55,46 +48,34 @@ const productScheme = new mongoose.Schema({
   },
 })
 
-
 productScheme.methods.greet = function () {
-  console.log('Hello')
-  // console.log(`- from ${this.name}`)
-  // return this
+  console.log(`hello 🤗 - from ${this.name}`)
+  return this
 }
 
+const Product = mongoose.model('Product', productScheme)
 
-const Product = mongoose.model(
-  'Product',
-  productScheme
-)
+let wolf = new Product({
+  name: 'wolfgang',
+  price: 8.2,
+  categories: ['Comedy'],
+})
 
-// const bike = new Product({
-//   name: 'tire pump',
-//   price: 29.99,
-  // categories: ['Cycling', 'Safety', 'Bike Helment'],
-// })
+wolf.save()
 
-// bike
-//   .save()
-//   .then((data) => console.log('It worked', data))
-//   .catch((err) =>
-//     console.log('Error', err.errors)
-//   )
-///////////////////////////////////////////////
+// findProduct()
 
-///////////////////////////////////////////////
+const kimbo = Product.findOne({
+  name: 'wolfgang',
+})
 
-// Product.findOneAndUpdate(
-//   { name: 'tire pump' },
-//   { size: 'XXL' },
-//   {
-//     new: true,
-//     runValidators: true
-//   }
-// )
-//   .then((data) => console.log('It worked', data))
-//   .catch((err) =>
-//     console.log('Error', err.errors)
-//   )
+// d(wolf)
+// wolf.greet()
 
+const findProduct = function () {
+  Product.findOne({
+    name: 'wolfgang',
+  }).then((res) => res.greet())
+}
 
+findProduct()
