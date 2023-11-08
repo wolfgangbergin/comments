@@ -48,34 +48,59 @@ const productScheme = new mongoose.Schema({
   },
 })
 
-productScheme.methods.greet = function () {
-  console.log(`hello 🤗 - from ${this.name}`)
-  return this
+productScheme.statics.fireSale = function () {
+  return this.updateMany({}, { onSale: true, price: 0 })
+}
+
+productScheme.methods.toggleOnSale = function () {
+  this.onSale = true
+  return this.save()
+}
+
+productScheme.methods.addCategory = function (newCat) {
+  this.categories.push(newCat)
+  return this.save()
 }
 
 const Product = mongoose.model('Product', productScheme)
 
 let wolf = new Product({
-  name: 'wolfgang',
+  name: 'jojoMan',
   price: 8.2,
   categories: ['Comedy'],
 })
 
 wolf.save()
 
-// findProduct()
 
-const kimbo = Product.findOne({
-  name: 'wolfgang',
+let jojo = new Product({
+  name: 'jojoMan',
+  price: 8.2,
+  categories: ['Comedy'],
 })
 
-// d(wolf)
-// wolf.greet()
+jojo.save()
 
-const findProduct = function () {
-  Product.findOne({
-    name: 'wolfgang',
-  }).then((res) => res.greet())
+
+const kimbo = Product.findOne({
+  name: 'jojoMan',
+})
+
+
+const findProduct = async function()  {
+  const foundProduct = await Product.findOne({
+    name: 'jojoMan',
+  })
+
+   await foundProduct.toggleOnSale()
+    await foundProduct.addCategory('Outdoors')
+   l(foundProduct)
+
 }
 
-findProduct()
+// findProduct()
+
+
+
+
+Product.fireSale().then(res => l(res))
